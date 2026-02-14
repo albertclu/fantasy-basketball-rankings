@@ -43,7 +43,6 @@
                               width: 100%;
                               border-collapse: collapse;
                               font-size: 11px;
-                              table-layout: fixed;
                                                           
                   
                       button {
@@ -69,6 +68,12 @@
                               font-size: 11px;
                 }
 
+                      td:nth-child(2) {
+                max-width: 150px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
                 thead {
                               background: #667eea;
                               color: white;
