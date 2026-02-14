@@ -49,18 +49,20 @@ function rankTeams() {
 
     // For other stats: rank based on per-game average
     ['threePM', 'reb', 'ast', 'stl', 'blk', 'pts'].forEach(cat => {
-              const categoryValues = rankings.map(t => parseFloat(t.perGameAvgs[cat]));
-              const sorted = [...categoryValues].sort((a, b) => b - a);
-
-                                                                   rankings.forEach(team => {
-                                                                                 const rank = sorted.findIndex(val => val === parseFloat(team.perGameAvgs[cat])) + 1;
-                                                                                 team.categoryRanks[cat] = 11 - rank;
-                                                                   });
-    });
-
-    // Calculate total score (sum of all category ranks)
-    rankings.forEach(team => {
-              team.totalScore = Object.values(team.categoryRanks).reduce((a, b) => a + b, 0);
+      const categoryValues = rankings.map(t => parseFloat(t.perGameAvgs[cat]));
+      const sorted = [...categoryValues].sort((a, b) => b - a);
+      const rankMap = new Map();
+      
+      sorted.forEach((val, idx) => {
+        if (!rankMap.has(val)) {
+          rankMap.set(val, idx + 1);
+        }
+      });
+      
+      rankings.forEach(team => {
+        const val = parseFloat(team.perGameAvgs[cat]);
+        team.categoryRanks[cat] = 11 - rankMap.get(val);
+      });
     });
 
     // Sort by total score (descending - higher is better)
