@@ -20,7 +20,7 @@
                 }
 
                 .container {
-                              max-width: 1400px;
+                              max-width: 1600px;
                               margin: 0 auto;
                 }
 
@@ -35,14 +35,14 @@
                 .results {
                               background: white;
                               border-radius: 8px;
-                              overflow: hidden;
+                              overflow: auto;
                               box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 }
 
                 table {
                               width: 100%;
                               border-collapse: collapse;
-                              font-size: 12px;
+                              font-size: 11px;
                 }
 
                 thead {
@@ -53,8 +53,8 @@
                 }
 
                 th {
-                              padding: 10px 8px;
-                              text-align: left;
+                              padding: 8px 4px;
+                              text-align: center;
                               font-weight: 600;
                               border-right: 1px solid rgba(255, 255, 255, 0.2);
                 }
@@ -64,9 +64,10 @@
                 }
 
                 td {
-                              padding: 8px;
+                              padding: 6px 4px;
                               border-bottom: 1px solid #eee;
                               border-right: 1px solid #eee;
+                              text-align: center;
                 }
 
                 td:last-child {
@@ -80,33 +81,30 @@
                 .rank {
                               font-weight: 600;
                               color: #667eea;
-                              width: 40px;
-                              text-align: center;
+                              width: 35px;
                 }
 
                 .team-name {
                               font-weight: 600;
                               color: #333;
-                              min-width: 180px;
+                              min-width: 140px;
+                              text-align: left;
                 }
 
                 .score {
                               font-weight: 700;
                               color: #764ba2;
-                              text-align: center;
-                              width: 50px;
+                              width: 40px;
                 }
 
                 .stat-cell {
-                              text-align: center;
-                              width: 45px;
+                              width: 30px;
                 }
 
-                .stat-label {
+                .rank-cell {
+                              background: #f0f8ff;
                               font-weight: 600;
-                              color: #666;
-                              font-size: 10px;
-                              padding: 4px 0;
+                              color: #0066cc;
                 }
 
                 .message {
@@ -116,32 +114,17 @@
                               font-style: italic;
                 }
 
-                .stat-group {
-                              display: flex;
-                              flex-direction: column;
-                              gap: 2px;
-                }
-
-                .stat-value {
-                              font-weight: 500;
-                }
-
-                .avg-value {
-                              font-size: 11px;
-                              color: #0066cc;
-                }
-
                 @media (max-width: 768px) {
                               body {
-                                                font-size: 11px;
-                              }
-
-                              table {
                                                 font-size: 10px;
                               }
 
+                              table {
+                                                font-size: 9px;
+                              }
+
                               th, td {
-                                                padding: 5px 4px;
+                                                padding: 4px 2px;
                               }
                 }
             </style>
@@ -157,37 +140,45 @@
                                                                                               <th>Rank</th>
                                                                       <th>Team</th>
                                                                       <th>Score</th>
-                                                                      <th colspan="2">FG%</th>
-                                                                      <th colspan="2">FT%</th>
-                                                                      <th colspan="2">3PM</th>
-                                                                      <th colspan="2">REB</th>
-                                                                      <th colspan="2">AST</th>
-                                                                      <th colspan="2">STL</th>
-                                                                      <th colspan="2">BLK</th>
-                                                                      <th colspan="2">PTS</th>
+                                                                      <th colspan="3">FG%</th>
+                                                                      <th colspan="3">FT%</th>
+                                                                      <th colspan="3">3PM</th>
+                                                                      <th colspan="3">REB</th>
+                                                                      <th colspan="3">AST</th>
+                                                                      <th colspan="3">STL</th>
+                                                                      <th colspan="3">BLK</th>
+                                                                      <th colspan="3">PTS</th>
                                                                     </tr>
                                                                   <tr>
                                                                                             <th colspan="3"></th>th>
-                                                                                            <th style="font-size: 10px;">Tot</th>th>
-                                                                                            <th style="font-size: 10px;">Avg</th>th>
-                                                                                            <th style="font-size: 10px;">Tot</th>th>
-                                                                                            <th style="font-size: 10px;">Avg</th>th>
-                                                                                            <th style="font-size: 10px;">Tot</th>th>
-                                                                                            <th style="font-size: 10px;">Avg</th>th>
-                                                                                            <th style="font-size: 10px;">Tot</th>th>
-                                                                                            <th style="font-size: 10px;">Avg</th>th>
-                                                                                            <th style="font-size: 10px;">Tot</th>th>
-                                                                                            <th style="font-size: 10px;">Avg</th>th>
-                                                                                            <th style="font-size: 10px;">Tot</th>th>
-                                                                                            <th style="font-size: 10px;">Avg</th>th>
-                                                                                            <th style="font-size: 10px;">Tot</th>th>
-                                                                                            <th style="font-size: 10px;">Avg</th>th>
-                                                                                            <th style="font-size: 10px;">Tot</th>th>
-                                                                                            <th style="font-size: 10px;">Avg</th>th>
+                                                                                            <th style="font-size: 9px;">Tot</th>th>
+                                                                                            <th style="font-size: 9px;">Avg</th>th>
+                                                                                            <th style="font-size: 9px;">Rnk</th>th>
+                                                                                            <th style="font-size: 9px;">Tot</th>th>
+                                                                                            <th style="font-size: 9px;">Avg</th>th>
+                                                                                            <th style="font-size: 9px;">Rnk</th>th>
+                                                                                            <th style="font-size: 9px;">Tot</th>th>
+                                                                                            <th style="font-size: 9px;">Avg</th>th>
+                                                                                            <th style="font-size: 9px;">Rnk</th>th>
+                                                                                            <th style="font-size: 9px;">Tot</th>th>
+                                                                                            <th style="font-size: 9px;">Avg</th>th>
+                                                                                            <th style="font-size: 9px;">Rnk</th>th>
+                                                                                            <th style="font-size: 9px;">Tot</th>th>
+                                                                                            <th style="font-size: 9px;">Avg</th>th>
+                                                                                            <th style="font-size: 9px;">Rnk</th>th>
+                                                                                            <th style="font-size: 9px;">Tot</th>th>
+                                                                                            <th style="font-size: 9px;">Avg</th>th>
+                                                                                            <th style="font-size: 9px;">Rnk</th>th>
+                                                                                            <th style="font-size: 9px;">Tot</th>th>
+                                                                                            <th style="font-size: 9px;">Avg</th>th>
+                                                                                            <th style="font-size: 9px;">Rnk</th>th>
+                                                                                            <th style="font-size: 9px;">Tot</th>th>
+                                                                                            <th style="font-size: 9px;">Avg</th>th>
+                                                                                            <th style="font-size: 9px;">Rnk</th>th>
                                                                   </tr>
                                               </thead>
                                               <tbody id="resultsBody">
-                                                                    <tr><td colspan="19" class="message">Loading sample data...</td>td></tr>
+                                                                    <tr><td colspan="27" class="message">Loading sample data...</td>td></tr>
                                               </tbody>tbody>
                             </table>
                 </div>div>
