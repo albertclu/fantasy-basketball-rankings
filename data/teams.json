@@ -1,0 +1,122 @@
+[
+    {
+          "team": "Jalen, Jaylen and Jalen",
+          "gamesPlayed": 10,
+          "fg": 4.87,
+          "ft": 0.821,
+          "threepm": 9,
+          "reb": 103,
+          "ast": 38,
+          "stl": 27,
+          "blk": 11,
+          "pts": 1078
+    },
+    {
+          "team": "ABOVE the RIM",
+          "gamesPlayed": 10,
+          "fg": 4.73,
+          "ft": 0.804,
+          "threepm": 10,
+          "reb": 107,
+          "ast": 32,
+          "stl": 26,
+          "blk": 10,
+          "pts": 1038
+    },
+    {
+          "team": "King Con",
+          "gamesPlayed": 10,
+          "fg": 4.62,
+          "ft": 0.822,
+          "threepm": 10,
+          "reb": 109,
+          "ast": 29,
+          "stl": 23,
+          "blk": 8,
+          "pts": 994
+    },
+    {
+          "team": "Bottom of the Barrel",
+          "gamesPlayed": 10,
+          "fg": 4.76,
+          "ft": 0.818,
+          "threepm": 8,
+          "reb": 102,
+          "ast": 18,
+          "stl": 24,
+          "blk": 9,
+          "pts": 1006
+    },
+    {
+          "team": "Mo Bamba Mo Problems",
+          "gamesPlayed": 10,
+          "fg": 5.04,
+          "ft": 0.713,
+          "threepm": 1,
+          "reb": 59,
+          "ast": 13,
+          "stl": 24,
+          "blk": 1,
+          "pts": 812
+    },
+    {
+          "team": "One Bad Trae'd",
+          "gamesPlayed": 10,
+          "fg": 4.98,
+          "ft": 0.812,
+          "threepm": 6,
+          "reb": 94,
+          "ast": 17,
+          "stl": 19,
+          "blk": 6,
+          "pts": 1016
+    },
+    {
+          "team": "Golden State of Mind",
+          "gamesPlayed": 10,
+          "fg": 4.88,
+          "ft": 0.811,
+          "threepm": 5,
+          "reb": 105,
+          "ast": 19,
+          "stl": 18,
+          "blk": 4,
+          "pts": 955
+    },
+    {
+          "team": "Ausur About That?",
+          "gamesPlayed": 10,
+          "fg": 4.83,
+          "ft": 0.785,
+          "threepm": 2,
+          "reb": 93,
+          "ast": 16,
+          "stl": 24,
+          "blk": 5,
+          "pts": 1001
+    },
+    {
+          "team": "One Dollar Tippers",
+          "gamesPlayed": 10,
+          "fg": 4.56,
+          "ft": 0.815,
+          "threepm": 7,
+          "reb": 92,
+          "ast": 17,
+          "stl": 22,
+          "blk": 2,
+          "pts": 926
+    },
+    {
+          "team": "Free Kel'el Ware!!",
+          "gamesPlayed": 10,
+          "fg": 4.85,
+          "ft": 0.787,
+          "threepm": 3,
+          "reb": 91,
+          "ast": 15,
+          "stl": 20,
+          "blk": 3,
+          "pts": 1007
+    }
+]
