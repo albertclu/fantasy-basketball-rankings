@@ -232,7 +232,7 @@
                             btn.textContent = '⏳ Loading...';
 
                             // Fetch the latest data from data/teams.json
-                            fetch('data/teams.json')
+                            fetch('data/teams.json?v=' + new Date().getTime())
                                 .then(response => response.json())
                                 .then(data => {
                                                       teamsData = data;
