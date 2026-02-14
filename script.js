@@ -43,10 +43,10 @@ function rankTeams() {
                                const categoryValues = rankings.map(t => t[cat]);
               const sorted = [...categoryValues].sort((a, b) => b - a);
 
-                               // Assign ranks (1 = best)
+                               // Assign ranks (10 = best, 1 = worst)
                                rankings.forEach(team => {
                                              const rank = sorted.findIndex(val => val === team[cat]) + 1;
-                                             team.categoryRanks[cat] = rank;
+                                             team.categoryRanks[cat] = 11 - rank; // Reverse: 11 - 1 = 10 (best), 11 - 10 = 1 (worst)
                                });
     });
 
@@ -55,8 +55,8 @@ function rankTeams() {
               team.totalScore = Object.values(team.categoryRanks).reduce((a, b) => a + b, 0);
     });
 
-    // Sort by total score (ascending - lower is better since rank 1 is best)
-    rankings.sort((a, b) => a.totalScore - b.totalScore);
+    // Sort by total score (descending - higher is better)
+    rankings.sort((a, b) => b.totalScore - a.totalScore);
 
     return rankings;
 }
