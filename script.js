@@ -17,105 +17,105 @@ const sampleData = [
 
 // Function to rank teams on a 1-10 scale for each category
 function rankTeams() {
-      if (teamsData.length === 0) return [];
+    if (teamsData.length === 0) return [];
 
-    // First pass: Calculate per-game averages
-    const rankings = teamsData.map(team => {
-              const categoryRanks = {};
-              const gp = team.gp || 550;
-              const perGameAvgs = {
-                            threePM: (team.threePM / gp).toFixed(2),
-                            reb: (team.reb / gp).toFixed(2),
-                            ast: (team.ast / gp).toFixed(2),
-                            stl: (team.stl / gp).toFixed(2),
-                            blk: (team.blk / gp).toFixed(2),
-                            pts: (team.pts / gp).toFixed(2)
-              };
+  // Create array of teams with their per-game averages pre-calculated
+  const rankings = teamsData.map(team => {
+        const gp = team.gp || 550;
+        return {
+                ...team,
+                threePMAvg: team.threePM / gp,
+                rebAvg: team.reb / gp,
+                astAvg: team.ast / gp,
+                stlAvg: team.stl / gp,
+                blkAvg: team.blk / gp,
+                ptsAvg: team.pts / gp,
+                categoryRanks: {}
+        };
+  });
 
-                                           return { ...team, categoryRanks, perGameAvgs };
-    });
+  // Rank FG% and FT% based on percentage values
+  ['fgPct', 'ftPct'].forEach(cat => {
+        const sorted = [...rankings].sort((a, b) => b[cat] - a[cat]);
+        rankings.forEach(team => {
+                const rank = sorted.findIndex(t => t === team) + 1;
+                team.categoryRanks[cat] = 11 - rank;
+        });
+  });
 
-    // Second pass: Calculate ranks for each category
-    // For FG% and FT%: rank based on the percentage itself
-    ['fgPct', 'ftPct'].forEach(cat => {
-              const categoryValues = rankings.map(t => t[cat]);
-              const sorted = [...categoryValues].sort((a, b) => b - a);
+  // Rank other stats based on per-game averages
+  const avgCategories = [
+    { name: 'threePM', key: 'threePMAvg' },
+    { name: 'reb', key: 'rebAvg' },
+    { name: 'ast', key: 'astAvg' },
+    { name: 'stl', key: 'stlAvg' },
+    { name: 'blk', key: 'blkAvg' },
+    { name: 'pts', key: 'ptsAvg' }
+      ];
 
-                                       rankings.forEach(team => {
-                                                     const rank = sorted.findIndex(val => val === team[cat]) + 1;
-                                                     team.categoryRanks[cat] = 11 - rank;
-                                       });
-    });
+  avgCategories.forEach(cat => {
+        const sorted = [...rankings].sort((a, b) => b[cat.key] - a[cat.key]);
+        rankings.forEach(team => {
+                const rank = sorted.findIndex(t => t === team) + 1;
+                team.categoryRanks[cat.name] = 11 - rank;
+        });
+  });
 
-    // For other stats: rank based on per-game average
-    ['threePM', 'reb', 'ast', 'stl', 'blk', 'pts'].forEach(cat => {
-      const categoryValues = rankings.map(t => parseFloat(t.perGameAvgs[cat]));
-      const sorted = [...categoryValues].sort((a, b) => b - a);
-      const rankMap = new Map();
-      
-      sorted.forEach((val, idx) => {
-        if (!rankMap.has(val)) {
-          rankMap.set(val, idx + 1);
-        }
-      });
-      
-      rankings.forEach(team => {
-        const val = parseFloat(team.perGameAvgs[cat]);
-        team.categoryRanks[cat] = 11 - rankMap.get(val);
-      });
-    });
+  // Calculate total score
+  rankings.forEach(team => {
+        team.totalScore = Object.values(team.categoryRanks).reduce((a, b) => a + b, 0);
+  });
 
-    // Sort by total score (descending - higher is better)
-    rankings.sort((a, b) => b.totalScore - a.totalScore);
-
+  // Sort by total score
+  rankings.sort((a, b) => b.totalScore - a.totalScore);
     return rankings;
 }
 
 // Function to update and display results
 function updateResults() {
-      const ranked = rankTeams();
-      const tbody = document.getElementById('resultsBody');
+    const ranked = rankTeams();
+    const tbody = document.getElementById('resultsBody');
 
-    if (ranked.length === 0) {
-              tbody.innerHTML = '<tr><td colspan="25" class="message">No data yet. Load sample data to get started!</td></tr>';
-              return;
-    }
+  if (ranked.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="25" class="message">No data yet. Load sample data to get started!</td></tr>';
+        return;
+  }
 
-    tbody.innerHTML = ranked.map((team, index) => {
-              return `
-                          <tr>
-                                          <td class="rank">#${index + 1}</td>
-                                                          <td class="team-name">${team.name}</td>
-                                                                          <td class="score">${team.totalScore}</td>
-                                                                                          <td class="stat-cell">${team.fgPct.toFixed(3)}</td>
-                                                                                                          <td class="stat-cell rank-cell">${team.categoryRanks.fgPct}</td>
-                                                                                                                          <td class="stat-cell">${team.ftPct.toFixed(3)}</td>
-                                                                                                                                          <td class="stat-cell rank-cell">${team.categoryRanks.ftPct}</td>
-                                                                                                                                                          <td class="stat-cell">${team.threePM}</td>
-                                                                                                                                                                          <td class="stat-cell">${team.perGameAvgs.threePM}</td>
-                                                                                                                                                                                          <td class="stat-cell rank-cell">${team.categoryRanks.threePM}</td>
-                                                                                                                                                                                                          <td class="stat-cell">${team.reb}</td>
-                                                                                                                                                                                                                          <td class="stat-cell">${team.perGameAvgs.reb}</td>
-                                                                                                                                                                                                                                          <td class="stat-cell rank-cell">${team.categoryRanks.reb}</td>
-                                                                                                                                                                                                                                                          <td class="stat-cell">${team.ast}</td>
-                                                                                                                                                                                                                                                                          <td class="stat-cell">${team.perGameAvgs.ast}</td>
-                                                                                                                                                                                                                                                                                          <td class="stat-cell rank-cell">${team.categoryRanks.ast}</td>
-                                                                                                                                                                                                                                                                                                          <td class="stat-cell">${team.stl}</td>
-                                                                                                                                                                                                                                                                                                                          <td class="stat-cell">${team.perGameAvgs.stl}</td>
-                                                                                                                                                                                                                                                                                                                                          <td class="stat-cell rank-cell">${team.categoryRanks.stl}</td>
-                                                                                                                                                                                                                                                                                                                                                          <td class="stat-cell">${team.blk}</td>
-                                                                                                                                                                                                                                                                                                                                                                          <td class="stat-cell">${team.perGameAvgs.blk}</td>
-                                                                                                                                                                                                                                                                                                                                                                                          <td class="stat-cell rank-cell">${team.categoryRanks.blk}</td>
-                                                                                                                                                                                                                                                                                                                                                                                                          <td class="stat-cell">${team.pts}</td>
-                                                                                                                                                                                                                                                                                                                                                                                                                          <td class="stat-cell">${team.perGameAvgs.pts}</td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                          <td class="stat-cell rank-cell">${team.categoryRanks.pts}</td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      </tr>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                              `;
-    }).join('');
+  tbody.innerHTML = ranked.map((team, index) => {
+        return `
+              <tr>
+                      <td class="rank">#${index + 1}</td>
+                              <td class="team-name">${team.name}</td>
+                                      <td class="score">${team.totalScore}</td>
+                                              <td class="stat-cell">${team.fgPct.toFixed(3)}</td>
+                                                      <td class="stat-cell rank-cell">${team.categoryRanks.fgPct}</td>
+                                                              <td class="stat-cell">${team.ftPct.toFixed(3)}</td>
+                                                                      <td class="stat-cell rank-cell">${team.categoryRanks.ftPct}</td>
+                                                                              <td class="stat-cell">${team.threePM}</td>
+                                                                                      <td class="stat-cell">${team.threePMAvg.toFixed(2)}</td>
+                                                                                              <td class="stat-cell rank-cell">${team.categoryRanks.threePM}</td>
+                                                                                                      <td class="stat-cell">${team.reb}</td>
+                                                                                                              <td class="stat-cell">${team.rebAvg.toFixed(2)}</td>
+                                                                                                                      <td class="stat-cell rank-cell">${team.categoryRanks.reb}</td>
+                                                                                                                              <td class="stat-cell">${team.ast}</td>
+                                                                                                                                      <td class="stat-cell">${team.astAvg.toFixed(2)}</td>
+                                                                                                                                              <td class="stat-cell rank-cell">${team.categoryRanks.ast}</td>
+                                                                                                                                                      <td class="stat-cell">${team.stl}</td>
+                                                                                                                                                              <td class="stat-cell">${team.stlAvg.toFixed(2)}</td>
+                                                                                                                                                                      <td class="stat-cell rank-cell">${team.categoryRanks.stl}</td>
+                                                                                                                                                                              <td class="stat-cell">${team.blk}</td>
+                                                                                                                                                                                      <td class="stat-cell">${team.blkAvg.toFixed(2)}</td>
+                                                                                                                                                                                              <td class="stat-cell rank-cell">${team.categoryRanks.blk}</td>
+                                                                                                                                                                                                      <td class="stat-cell">${team.pts}</td>
+                                                                                                                                                                                                              <td class="stat-cell">${team.ptsAvg.toFixed(2)}</td>
+                                                                                                                                                                                                                      <td class="stat-cell rank-cell">${team.categoryRanks.pts}</td>
+                                                                                                                                                                                                                            </tr>
+                                                                                                                                                                                                                                `;
+  }).join('');
 }
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-      teamsData = JSON.parse(JSON.stringify(sampleData));
-      updateResults();
+    teamsData = JSON.parse(JSON.stringify(sampleData));
+    updateResults();
 });
