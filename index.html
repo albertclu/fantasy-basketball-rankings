@@ -41,7 +41,28 @@
 
                 table {
                               width: 100%;
-                              border-collapse: collapse;
+                              
+                  
+                      button {
+                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                color: white;
+                                padding: 10px 20px;
+                                font-size: 11px;
+                                border: none;
+                                border-radius: 8px;
+                                cursor: pointer;
+                                margin-bottom: 15px;
+                                transition: transform 0.2s, box-shadow 0.2s;
+                      }
+                  
+                      button:hover {
+                                transform: scale(1.05);
+                                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+                      }
+                  
+                      button:active {
+                                transform: scale(0.98);
+                      }border-collapse: collapse;
                               font-size: 11px;
                 }
 
@@ -132,6 +153,7 @@
   <body>
         <div class="container">
                   <h1>🏀 Fantasy Basketball Rankings</h1>
+                  <button id="refreshBtn" onclick="refreshData()">🔄 Refresh Data</button>button>
                 
                 <div class="results">
                             <table>
@@ -186,7 +208,31 @@
   </body>
 </html>html></tr>
                                                                   </tr></th></th>
-                                                                    </tr>
+    <script>
+              function refreshData() {
+                            const btn = document.getElementById('refreshBtn');
+                            btn.disabled = true;
+                            btn.textContent = '⏳ Loading...';
+
+                            // Fetch the latest data from data/teams.json
+                            fetch('data/teams.json')
+                                .then(response => response.json())
+                                .then(data => {
+                                                      teamsData = data;
+                                                      updateResults();
+                                                      btn.disabled = false;
+                                                      btn.textContent = '🔄 Refresh Data';
+                                })
+                                .catch(error => {
+                                                      console.error('Error refreshing data:', error);
+                                                      btn.disabled = false;
+                                                      btn.textContent = '🔄 Refresh Data';
+                                                      alert('Failed to refresh data. Please try again.');
+                                });
+              }
+    </script>
+    </script>
+</tr>
                                               </thead>
                             </table></h1>
   </body>
