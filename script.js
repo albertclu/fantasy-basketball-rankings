@@ -15,6 +15,24 @@ const sampleData = [
   { name: "One Dollar Tippers", fgPct: 0.46647441, ftPct: 0.8147986, threePM: 929, reb: 3303, ast: 2218, stl: 542, blk: 333, pts: 9260, gp: 548 }
   ];
 
+// ESPN Fantasy Basketball constants for team links
+const LEAGUE_ID = 24352;
+const SEASON_ID = 2026;
+
+// Mapping of team names to their team IDs
+const TEAM_ID_MAP = {
+    "Jalen, Jaylen and Jalen": 5,
+    "ABOVE the RIM": 3,
+    "Bottom of the Barrel": 6,
+    "Ausur About That?": 4,
+    "One Bad Trae'd": 8,
+    "King Con": 1,
+    "Golden State of Mind": 9,
+    "Mo Bamba Mo Problems": 10,
+    "Free Kel'el Ware!!": 2,
+    "One Dollar Tippers": 7
+};
+
 // Function to rank teams on a 1-10 scale for each category
 function rankTeams() {
     if (teamsData.length === 0) return [];
@@ -85,7 +103,7 @@ function updateResults() {
         return `
               <tr>
                       <td class="rank">#${index + 1}</td>
-                              <td class="team-name">${team.name}</td>
+                              <td class="team-name"hh><a href="https://fantasy.espn.com/basketball/team?leagueId=${LEAGUE_ID}&teamId=${TEAM_ID_MAP[team.name] || ''}" target="_blank" style="color: inherit; text-decoration: none;">${team.name}</a>}</td>
                                       <td class="score">${team.totalScore}</td>
                                               <td class="stat-cell">${team.fgPct.toFixed(3)}</td>
                                                       <td class="stat-cell rank-cell">${team.categoryRanks.fgPct}</td>
