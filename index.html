@@ -171,8 +171,7 @@ width: 1000px;
         <div class="container">
         <h1>🏀 <a href="https://fantasy.espn.com/basketball/league/standings?leagueId=24352">GQ Fantasy Basketball Rankings</a></h1>                
                 <div class="results">
-                                    <div style="display: block;  text-align: right; margin-bottom: 10px;"><button id="refreshBtn" onclick="refreshData()">🔄 Refresh Data</button>
-                                    </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;"><span id="lastUpdated" style="font-size: 12px; color: #666;">Last updated: Never</span>span><button id="refreshBtn" onclick="refreshData()">🔄 Refresh Data</button>button></div>                                    </div>
 
                             <table>
                                               <thead>
@@ -245,6 +244,9 @@ width: 1000px;
                                 .then(data => {
                                                       teamsData = data;
                                                       updateResults();
+                                                  const now = new Date();
+                                                  const timeStr = now.toLocaleString();
+                                                  document.getElementById('lastUpdated').textContent = 'Last updated: ' + timeStr;
                                                       btn.disabled = false;
                                                       btn.textContent = '🔄 Refresh Data';
                                 })
