@@ -85,7 +85,7 @@ function updateResults() {
         return `
               <tr>
                       <td class="rank">#${index + 1}</td>
-                              <td class="team-name">$<a href="https://fantasy.espn.com/basketball/team?leagueId=1&teamId=${team.id || ''}" target="_blank" style="color: inherit; text-decoration: none;">${team.name}</a>}</td>
+                              <td class="team-name">${team.name}</td>
                                       <td class="score">${team.totalScore}</td>
                                               <td class="stat-cell">${team.fgPct.toFixed(3)}</td>
                                                       <td class="stat-cell rank-cell">${team.categoryRanks.fgPct}</td>
