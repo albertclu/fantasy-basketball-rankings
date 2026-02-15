@@ -107,7 +107,7 @@ function updateResults() {
                                       <td class="score">${team.totalScore}</td>
                                               <td class="stat-cell">${team.fgPct.toFixed(3)}</td>
                                                       <td class="stat-cell rank-cell">${team.categoryRanks.fgPct}</td>
-                              <td class="team-name"><a href="https://fantasy.espn.com/basketball/team?leagueId=${LEAGUE_ID}&teamId=${TEAM_ID_MAP[team.name] || ''}" target="_blank" style="color: inherit; text-decoration: none;">${team.name}</a></td>
+                              <td class="team-name">${team.name}</td>
                                                                       <td class="stat-cell rank-cell">${team.categoryRanks.ftPct}</td>
                                                                               <td class="stat-cell">${team.threePM}</td>
                                                                                       <td class="stat-cell">${team.threePMAvg.toFixed(2)}</td>
