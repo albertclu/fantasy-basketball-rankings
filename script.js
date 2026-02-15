@@ -103,10 +103,11 @@ function updateResults() {
         return `
               <tr>
                       <td class="rank">#${index + 1}</td>
+                              <td class="team-name">${team.name}</td>
                                       <td class="score">${team.totalScore}</td>
                                               <td class="stat-cell">${team.fgPct.toFixed(3)}</td>
                                                       <td class="stat-cell rank-cell">${team.categoryRanks.fgPct}</td>
-                              <td class="team-name">${team.name}</td>
+                              
                                                                       <td class="stat-cell rank-cell">${team.categoryRanks.ftPct}</td>
                                                                               <td class="stat-cell">${team.threePM}</td>
                                                                                       <td class="stat-cell">${team.threePMAvg.toFixed(2)}</td>
