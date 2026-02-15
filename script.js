@@ -103,7 +103,7 @@ function updateResults() {
         return `
               <tr>
                       <td class="rank">#${index + 1}</td>
-                              <td class="team-name"hh><a href="https://fantasy.espn.com/basketball/team?leagueId=` + LEAGUE_ID + `&teamId=` + (TEAM_ID_MAP[team.name] || '') + `" target="_blank" style="color: inherit; text-decoration: none;">` + team.name + `</a>
+                              <td class="team-name">`<a href="https://fantasy.espn.com/basketball/team?leagueId=` + LEAGUE_ID + `&teamId=` + (TEAM_ID_MAP[team.name] || '') + `" target="_blank" style="color: inherit; text-decoration: none;">` + team.name + `</a>
                                       <td class="score">${team.totalScore}</td>
                                               <td class="stat-cell">${team.fgPct.toFixed(3)}</td>
                                                       <td class="stat-cell rank-cell">${team.categoryRanks.fgPct}</td>
