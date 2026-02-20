@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 
 // Your league ID from ESPN
 const LEAGUE_ID = '24352';
-const ESPN_URL = 'https://fantasy.espn.com/basketball/league/standings?leagueId=24352&statView=live';
+const ESPN_URL = `https://fantasy.espn.com/basketball/league/standings?leagueId=${LEAGUE_ID}&statView=live`;
 
 async function scrapeESPN() {
       try {
