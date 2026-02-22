@@ -172,7 +172,7 @@ width: 1000px;
         <div class="container">
         <h1>🏀<a target="_blank" rel="noopener noreferrer" href="https://fantasy.espn.com/basketball/league/standings?leagueId=24352" style="color: #FFBF00;">GQ Projected Standings</a></h1>                
                 <div class="results">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;"><span id="lastUpdated" style="font-size: 12px; color: #CCC;"></span><button id="refreshBtn" onclick="refreshData()">🔄 Refresh Data</button></div>                                    </div>
+            </div>
                 <div class="results">
                             <table>
                                               <thead>
@@ -227,38 +227,12 @@ width: 1000px;
       
       <script src="script.js">
          // Auto-load fresh data when page loads
-      window.addEventListener('DOMContentLoaded', function() {
-        refreshData();
-      });
+      
       </script>
   </body>
 </html></tr>
                                                                   </tr></th></th>
     <script>
-              function refreshData() {
-                            const btn = document.getElementById('refreshBtn');
-                            btn.disabled = true;
-                            btn.textContent = '⏳ Loading...';
-
-                            // Fetch the latest data from data/teams.json
-                            fetch('data/teams.json?v=' + new Date().getTime())
-                                .then(response => response.json())
-                                .then(data => {
-                                                      teamsData = data;
-                                                      updateResults();
-                                                  const now = new Date();
-                                                  const timeStr = now.toLocaleString();
-                                                  document.getElementById('lastUpdated').textContent = 'Last updated: ' + timeStr;
-                                                      btn.disabled = false;
-                                                      btn.textContent = '🔄 Refresh Data';
-                                })
-                                .catch(error => {
-                                                      console.error('Error refreshing data:', error);
-                                                      btn.disabled = false;
-                                                      btn.textContent = '🔄 Refresh Data';
-                                                      alert('Failed to refresh data. Please try again.');
-                                });
-              }
     </script>
     </script>
 </tr>

@@ -132,8 +132,19 @@ function updateResults() {
   }).join('');
 }
 
-// Initialize on page load
+// Initialize on page load — always fetch fresh data from teams.json
 document.addEventListener('DOMContentLoaded', function() {
-    teamsData = JSON.parse(JSON.stringify(sampleData));
-    updateResults();
+    fetch('data/teams.json?v=' + new Date().getTime())
+        .then(response => response.json())
+        .then(data => {
+            teamsData = data;
+            updateResults();
+            const now = new Date();
+            document.getElementById('lastUpdated').textContent = 'Last updated: ' + now.toLocaleString();
+        })
+        .catch(() => {
+            // Fallback to sample data if fetch fails
+            teamsData = JSON.parse(JSON.stringify(sampleData));
+            updateResults();
+        });
 });
