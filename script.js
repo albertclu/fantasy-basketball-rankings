@@ -139,8 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             teamsData = data;
             updateResults();
-            const now = new Date();
-            document.getElementById('lastUpdated').textContent = 'Last updated: ' + now.toLocaleString();
+            const el = document.getElementById('lastUpdated');
+            if (el) el.textContent = 'Last updated: ' + new Date().toLocaleString();
         })
         .catch(() => {
             // Fallback to sample data if fetch fails
