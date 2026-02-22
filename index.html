@@ -1,243 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>GQ Fantasy Basketball Rankings</title>
-      <style>
-                * {
-                              margin: 0;
-                              padding: 0;
-                              box-sizing: border-box;
-                }
-
-                body {
-                              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                              background: linear-gradient(135deg, #203354 100%, #203354 100%);
-                              min-height: 100vh;
-                              padding: 15px;
-                              font-size: 13px;
-                }
-
-                .container {
-                              max-width: 1600px;
-                              margin: 0 auto;
-                }
-
-                h1 {
-                              text-align: center;
-                              color: white;
-                              margin-bottom: 20px;
-                              font-size: 2em;
-                              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-                }
-
-                .results {
-                  background: linear-gradient(135deg, #5265BB 100%, #5265BB 100%);
-                  
-                  overflow: auto;
-width: 1000px;
-                        margin: 0 auto;
-                          margin: 0 auto;
-                          display: flex;
-                          flex-direction: column;
-                }
-
-                table {
-                              
-                              border-collapse: collapse;
-                              font-size: 11px;
-                              margin: 0;
-                              background: white;
-                              width: 1000px;
-                
-                                                          
-                  
-                      button {
-                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                                color: white;
-                                padding: 10px 20px;
-                                font-size: 11px;
-                                border: none;
-                                border-radius: 8px;
-                                cursor: pointer;
-                                margin-bottom: 15px;
-                                transition: transform 0.2s, box-shadow 0.2s;
-                      }
-                  
-                      button:hover {
-                                transform: scale(1.05);
-                                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-                      }
-                  
-                      button:active {
-                                transform: scale(0.98);
-                      }border-collapse: collapse;
-                              font-size: 11px;
-                }
-
-                      td:nth-child(2) {
-                        max-width: 90px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                      }
-        
-                thead {
-                              background: #667eea;
-                              color: white;
-                              position: sticky;
-                              top: 0;
-                }
-
-                th {
-                              padding: 8px 4px;
-                              text-align: center;
-                              font-weight: 600;
-                              border-right: 1px solid rgba(255, 255, 255, 0.2);
-                }
-
-                th:last-child {
-                              border-right: none;
-                }
-
-                td {
-                              padding: 6px 4px;
-                              border-bottom: 1px solid #eee;
-                              border-right: 1px solid #eee;
-                              text-align: center;
-                }
-
-                td:last-child {
-                              border-right: none;
-                }
-
-                tbody tr:hover {
-                              background: #f9f9f9;
-                }
-
-                .rank {
-                              font-weight: 600;
-                              color: #667eea;
-                              width: 35px;
-                }
-
-                .team-name {
-                              font-weight: 600;
-                              color: #333;
-                              min-width: 140px;
-                              text-align: left;
-                }
-
-                .score {
-                              font-weight: 700;
-                              color: #764ba2;
-                              width: 40px;
-                }
-
-                .stat-cell {
-                              width: 30px;
-                              border-bottom: 3px solid #e0e0e0;
-                }
-
-                .rank-cell {
-                              background: #f0f8ff;
-                              font-weight: 600;
-                              color: #0066cc;
-                }
-
-                .message {
-                              text-align: center;
-                              color: #999;
-                              padding: 20px;
-                              font-style: italic;
-                }
-
-                @media (max-width: 768px) {
-                              body {
-                                                font-size: 10px;
-                              }
-
-                              table {
-                                                font-size: 9px;
-                              }
-
-                              th, td {
-                                                padding: 4px 2px;
-                              }
-                }
-            </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GQ Fantasy Basketball Rankings</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #203354 100%, #203354 100%); min-height: 100vh; padding: 15px; font-size: 13px; }
+      .container { max-width: 1600px; margin: 0 auto; }
+      h1 { text-align: center; color: white; margin-bottom: 20px; font-size: 2em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+      .results { background: linear-gradient(135deg, #5265BB 100%, #5265BB 100%); overflow: auto; width: 1000px; margin: 0 auto; display: flex; flex-direction: column; }
+      table { border-collapse: collapse; font-size: 11px; margin: 0; background: white; width: 1000px; }
+      td:nth-child(2) { max-width: 90px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      thead { background: #667eea; color: white; position: sticky; top: 0; }
+      th { padding: 8px 4px; text-align: center; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.2); }
+      th:last-child { border-right: none; }
+      td { padding: 6px 4px; border-bottom: 1px solid #eee; border-right: 1px solid #eee; text-align: center; }
+      td:last-child { border-right: none; }
+      tbody tr:hover { background: #f9f9f9; }
+      .rank { font-weight: 600; color: #667eea; width: 35px; }
+      .team-name { font-weight: 600; color: #333; min-width: 140px; text-align: left; }
+      .score { font-weight: 700; color: #764ba2; width: 40px; }
+      .stat-cell { width: 30px; border-bottom: 3px solid #e0e0e0; }
+      .rank-cell { background: #f0f8ff; font-weight: 600; color: #0066cc; }
+      .message { text-align: center; color: #999; padding: 20px; font-style: italic; }
+      @media (max-width: 768px) { body { font-size: 10px; } table { font-size: 9px; } th, td { padding: 4px 2px; } }
+    </style>
   </head>
   <body>
-        <div class="container">
-        <h1>🏀<a target="_blank" rel="noopener noreferrer" href="https://fantasy.espn.com/basketball/league/standings?leagueId=24352" style="color: #FFBF00;">GQ Projected Standings</a></h1>                
-                <div class="results">
-            </div>
-                <div class="results">
-                            <table>
-                                              <thead>
-                                                                    <tr>
-                                                                                              <th>Rank</th>
-                                                                      <th>Team</th>
-                                                                      <th>Score</th>
-                                                                      <th colspan="2">FG%</th>
-                                                                      <th colspan="2">FT%</th>
-                                                                      <th colspan="3">3PM</th>
-                                                                      <th colspan="3">REB</th>
-                                                                      <th colspan="3">AST</th>
-                                                                      <th colspan="3">STL</th>
-                                                                      <th colspan="3">BLK</th>
-                                                                      <th colspan="3">PTS</th>
-                                                                      <th style="font-size: 11px; background-color: #667eea;"">GP</th>
-                                                                    </tr>
-                                                                  <tr>
-                                                                                            <th colspan="3"></th>
-                                                                                            <th style="font-size: 9px;">Tot</th>
-                                                                                            <th style="font-size: 9px;">Rnk</th>
-                                                                                            <th style="font-size: 9px;">Tot</th>
-                                                                                            <th style="font-size: 9px;">Rnk</th>
-                                                                                            <th style="font-size: 9px;">Tot</th>
-                                                                                            <th style="font-size: 9px;">Avg</th>
-                                                                                            <th style="font-size: 9px;">Rnk</th>
-                                                                                            <th style="font-size: 9px;">Tot</th>
-                                                                                            <th style="font-size: 9px;">Avg</th>
-                                                                                            <th style="font-size: 9px;">Rnk</th>
-                                                                                            <th style="font-size: 9px;">Tot</th>
-                                                                                            <th style="font-size: 9px;">Avg</th>
-                                                                                            <th style="font-size: 9px;">Rnk</th>
-                                                                                            <th style="font-size: 9px;">Tot</th>
-                                                                                            <th style="font-size: 9px;">Avg</th>
-                                                                                            <th style="font-size: 9px;">Rnk</th>
-                                                                                            <th style="font-size: 9px;">Tot</th>
-                                                                                            <th style="font-size: 9px;">Avg</th>
-                                                                                            <th style="font-size: 9px;">Rnk</th>
-                                                                                            <th style="font-size: 9px;">Tot</th>
-                                                                                            <th style="font-size: 9px;">Avg</th>
-                                                                                            <th style="font-size: 9px;">Rnk</th>
-                                                                                            <th style="font-size: 9px; background-color: #667eea;">
-                                                                  </tr>
-                                              </thead>
-                                              <tbody id="resultsBody">
-                                                                    <tr><td colspan="25" class="message">Loading sample data...</td></tr>
-                                              </tbody>
-                            </table>
-                      </div>
-                </div>
-        </div>
-      
-      <script src="script.js">
-         // Auto-load fresh data when page loads
-      
-      </script>
+    <div class="container">
+      <h1>🏀<a target="_blank" rel="noopener noreferrer" href="https://fantasy.espn.com/basketball/league/standings?leagueId=24352" style="color: #FFBF00;">GQ Projected Standings</a></h1>
+      <div class="results">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th><th>Team</th><th>Score</th>
+              <th colspan="2">FG%</th><th colspan="2">FT%</th>
+              <th colspan="3">3PM</th><th colspan="3">REB</th>
+              <th colspan="3">AST</th><th colspan="3">STL</th>
+              <th colspan="3">BLK</th><th colspan="3">PTS</th>
+              <th style="font-size:11px;background-color:#667eea;">GP</th>
+            </tr>
+            <tr>
+              <th colspan="3"></th>
+              <th style="font-size:9px;">Tot</th><th style="font-size:9px;">Rnk</th>
+              <th style="font-size:9px;">Tot</th><th style="font-size:9px;">Rnk</th>
+              <th style="font-size:9px;">Tot</th><th style="font-size:9px;">Avg</th><th style="font-size:9px;">Rnk</th>
+              <th style="font-size:9px;">Tot</th><th style="font-size:9px;">Avg</th><th style="font-size:9px;">Rnk</th>
+              <th style="font-size:9px;">Tot</th><th style="font-size:9px;">Avg</th><th style="font-size:9px;">Rnk</th>
+              <th style="font-size:9px;">Tot</th><th style="font-size:9px;">Avg</th><th style="font-size:9px;">Rnk</th>
+              <th style="font-size:9px;">Tot</th><th style="font-size:9px;">Avg</th><th style="font-size:9px;">Rnk</th>
+              <th style="font-size:9px;">Tot</th><th style="font-size:9px;">Avg</th><th style="font-size:9px;">Rnk</th>
+              <th style="font-size:9px;background-color:#667eea;"></th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody">
+            <tr><td colspan="25" class="message">Loading data...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
-</html></tr>
-                                                                  </tr></th></th>
-    <script>
-    </script>
-    </script>
-</tr>
-                                              </thead>
-                            </table></h1>
-  </body>
-      </style></title>
-  </head>
+</html>
