@@ -8,7 +8,7 @@
     "ast": 2834,
     "stl": 614,
     "blk": 283,
-    "pts": 11550,
+    "pts": 11552,
     "gp": 568
   },
   {
@@ -40,24 +40,12 @@
     "fgPct": 0.4814,
     "ftPct": 0.7846,
     "threePM": 985,
-    "reb": 3505,
+    "reb": 3506,
     "ast": 2515,
     "stl": 684,
     "blk": 445,
     "pts": 10543,
     "gp": 585
-  },
-  {
-    "name": "One Bad Trae'd",
-    "fgPct": 0.4988,
-    "ftPct": 0.8102,
-    "threePM": 1006,
-    "reb": 3505,
-    "ast": 2004,
-    "stl": 494,
-    "blk": 422,
-    "pts": 10671,
-    "gp": 576
   },
   {
     "name": "King Con",
@@ -70,6 +58,18 @@
     "blk": 438,
     "pts": 10353,
     "gp": 541
+  },
+  {
+    "name": "One Bad Trae'd",
+    "fgPct": 0.4988,
+    "ftPct": 0.8102,
+    "threePM": 1006,
+    "reb": 3505,
+    "ast": 2004,
+    "stl": 494,
+    "blk": 422,
+    "pts": 10671,
+    "gp": 576
   },
   {
     "name": "Golden State of Mind",
@@ -97,11 +97,11 @@
   },
   {
     "name": "Free Kel'el Ware!!",
-    "fgPct": 0.4868,
+    "fgPct": 0.4867,
     "ftPct": 0.7869,
     "threePM": 958,
     "reb": 3459,
-    "ast": 2130,
+    "ast": 2131,
     "stl": 596,
     "blk": 378,
     "pts": 10512,
@@ -109,14 +109,14 @@
   },
   {
     "name": "One Dollar Tippers",
-    "fgPct": 0.4658,
+    "fgPct": 0.4659,
     "ftPct": 0.8146,
     "threePM": 974,
     "reb": 3432,
     "ast": 2309,
     "stl": 567,
     "blk": 352,
-    "pts": 9625,
+    "pts": 9627,
     "gp": 570
   }
 ]
